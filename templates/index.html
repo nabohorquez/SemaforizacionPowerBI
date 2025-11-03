@@ -1,0 +1,88 @@
+{% extends 'html/templates/base.html' %}
+
+{% block head_adds %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <!-- Título principal -->
+    <div class="text-center mb-5">
+      <h1 class="display-5 fw-bold text-primary mb-3">Sistema de Semaforización Inteligente</h1>
+      <p class="lead text-muted">Fase I - Modelado y Análisis de Datos para una Ciudad Inteligente</p>
+    </div>
+
+    <!-- Introducción -->
+    <section class="mb-5">
+      <h2 class="text-secondary border-bottom pb-2 mb-4">1. Introducción</h2>
+      <p class="text-justify">
+        El presente proyecto forma parte del desarrollo de una <strong>Ciudad Inteligente</strong> ficticia,
+        cuyo propósito es integrar herramientas tecnológicas y sistemas de información para optimizar la gestión urbana.
+        En esta primera fase se trabajó en el subsistema de <strong>semaforización inteligente</strong>,
+        orientado a mejorar el flujo vehicular mediante el análisis de datos en tiempo real.
+      </p>
+      <p class="text-justify">
+        El trabajo consistió en diseñar y construir una base de datos relacional que almacenara información proveniente
+        de sensores, vehículos, ubicaciones y fechas. Posteriormente, los datos fueron cargados mediante procesos
+        <strong>ETL (Extract, Transform, Load)</strong> utilizando <strong>SQL Server Integration Services
+          (SSIS)</strong>,
+        garantizando su integridad y consistencia.
+      </p>
+      <p class="text-justify">
+        Finalmente, se elaboró una base de datos multidimensional, basada en el modelo relacional, para facilitar la
+        consulta, análisis y evaluación del comportamiento del tráfico, sentando las bases para la futura toma de
+        decisiones
+        en el contexto de la ciudad inteligente. Además, se realizaron pruebas de rendimiento comparando las consultas
+        ejecutadas en ambos modelos con el fin de analizar la eficiencia de cada estructura.
+      </p>
+      <div class="alert alert-info mt-4 shadow-sm">
+        <strong>Contexto:</strong> El proyecto se centra en la movilidad de la ciudad de <strong>Bogotá</strong>,
+        una de las más congestionadas del mundo. El sistema toma datos cada 5 minutos, las 24 horas del día,
+        sobre el flujo vehicular y la velocidad en cada semáforo.
+        Mediante procedimientos almacenados, el tiempo de los semáforos se ajusta dinámicamente para reducir
+        la congestión y mejorar la movilidad urbana.
+      </div>
+    </section>
+
+    <!-- Objetivos -->
+    <section>
+      <h2 class="text-secondary border-bottom pb-2 mb-4">2. Objetivos</h2>
+
+      <h4 class="fw-bold text-primary">Objetivo General</h4>
+      <p class="text-justify">
+        Desarrollar la primera fase del sistema de información para la Ciudad Inteligente, enfocada en la creación, carga
+        y modelado de una base de datos relacional y multidimensional que soporte el análisis del tráfico vehicular
+        mediante
+        semáforos inteligentes.
+      </p>
+
+      <h4 class="fw-bold text-primary mt-4">Objetivos Específicos</h4>
+      <ul class="list-group list-group-flush shadow-sm rounded text-start">
+        <li class="list-group-item">
+          <i class="bi bi-diagram-3 text-success me-2"></i>
+          Diseñar un modelo relacional que represente las entidades principales del sistema: vehículos, ubicaciones,
+          fechas, semáforos y velocidades.
+        </li>
+        <li class="list-group-item">
+          <i class="bi bi-box-arrow-in-down text-success me-2"></i>
+          Implementar procesos ETL en SSIS para la carga controlada de los datos hacia la base de datos SQL Server.
+        </li>
+        <li class="list-group-item">
+          <i class="bi bi-graph-up text-success me-2"></i>
+          Crear un modelo multidimensional derivado del modelo relacional, optimizado para análisis y consultas de alto
+          nivel.
+        </li>
+        <li class="list-group-item">
+          <i class="bi bi-stopwatch text-success me-2"></i>
+          Realizar consultas comparativas entre ambos modelos y medir los tiempos de respuesta para evaluar el
+          rendimiento.
+        </li>
+        <li class="list-group-item">
+          <i class="bi bi-bug text-success me-2"></i>
+          Identificar y documentar errores o dificultades surgidas durante la carga y la ejecución de las consultas,
+          proponiendo posibles soluciones.
+        </li>
+      </ul>
+    </section>
+  </div>
+{% endblock %}

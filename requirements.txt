@@ -1,0 +1,8 @@
+Flask
+matplotlib
+numpy
+python-dotenv
+Flask-Migrate
+flask-sqlalchemy
+pyodbc
+setuptools
