@@ -1,88 +1,446 @@
-{% extends 'html/templates/base.html' %}
+{% extends 'html/templates/base.html' %} {% block head_adds %}
+<link
+  rel="shortcut icon"
+  href="{{ url_for('static', filename='/semaforizacion-favico.ico') }}"
+/>
+<!-- Custom styles -->
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='/css/content.css') }}"
+/>
+{% endblock %} {% block content %}
 
-{% block head_adds %}
-<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon.ico') }}">
-{% endblock %}
-
-{% block content %}
+<!-- Título principal -->
+<header id="top" class="main-intro">
   <div class="container">
-    <!-- Título principal -->
-    <div class="text-center mb-5">
-      <h1 class="display-5 fw-bold text-primary mb-3">Sistema de Semaforización Inteligente</h1>
-      <p class="lead text-muted">Fase I - Modelado y Análisis de Datos para una Ciudad Inteligente</p>
-    </div>
-
-    <!-- Introducción -->
-    <section class="mb-5">
-      <h2 class="text-secondary border-bottom pb-2 mb-4">1. Introducción</h2>
-      <p class="text-justify">
-        El presente proyecto forma parte del desarrollo de una <strong>Ciudad Inteligente</strong> ficticia,
-        cuyo propósito es integrar herramientas tecnológicas y sistemas de información para optimizar la gestión urbana.
-        En esta primera fase se trabajó en el subsistema de <strong>semaforización inteligente</strong>,
-        orientado a mejorar el flujo vehicular mediante el análisis de datos en tiempo real.
-      </p>
-      <p class="text-justify">
-        El trabajo consistió en diseñar y construir una base de datos relacional que almacenara información proveniente
-        de sensores, vehículos, ubicaciones y fechas. Posteriormente, los datos fueron cargados mediante procesos
-        <strong>ETL (Extract, Transform, Load)</strong> utilizando <strong>SQL Server Integration Services
-          (SSIS)</strong>,
-        garantizando su integridad y consistencia.
-      </p>
-      <p class="text-justify">
-        Finalmente, se elaboró una base de datos multidimensional, basada en el modelo relacional, para facilitar la
-        consulta, análisis y evaluación del comportamiento del tráfico, sentando las bases para la futura toma de
-        decisiones
-        en el contexto de la ciudad inteligente. Además, se realizaron pruebas de rendimiento comparando las consultas
-        ejecutadas en ambos modelos con el fin de analizar la eficiencia de cada estructura.
-      </p>
-      <div class="alert alert-info mt-4 shadow-sm">
-        <strong>Contexto:</strong> El proyecto se centra en la movilidad de la ciudad de <strong>Bogotá</strong>,
-        una de las más congestionadas del mundo. El sistema toma datos cada 5 minutos, las 24 horas del día,
-        sobre el flujo vehicular y la velocidad en cada semáforo.
-        Mediante procedimientos almacenados, el tiempo de los semáforos se ajusta dinámicamente para reducir
-        la congestión y mejorar la movilidad urbana.
+    <div class="row align-items-center g-4">
+      <div class="col-lg-8">
+        <h1 class="mb-3">Sistema de Semaforización Inteligente</h1>
+        <p class="lead mb-4">
+          Fase I — Modelado y Análisis de Datos para una Ciudad Inteligente
+          (Data Warehouse).
+        </p>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge text-bg-light">
+            <i class="bi bi-database"></i>
+            SSIS + ETL
+          </span>
+          <i class="bi bi-arrow-right-short d-flex align-items-center fs-4"></i>
+          <span class="badge text-bg-light">
+            <i class="bi bi-diagram-3"></i>
+            Modelo Relacional
+          </span>
+          <i class="bi bi-arrow-right-short d-flex align-items-center fs-4"></i>
+          <span class="badge text-bg-light">
+            <i class="bi bi-grid-3x3-gap"></i>
+            Base Multidimensional
+          </span>
+        </div>
       </div>
-    </section>
-
-    <!-- Objetivos -->
-    <section>
-      <h2 class="text-secondary border-bottom pb-2 mb-4">2. Objetivos</h2>
-
-      <h4 class="fw-bold text-primary">Objetivo General</h4>
-      <p class="text-justify">
-        Desarrollar la primera fase del sistema de información para la Ciudad Inteligente, enfocada en la creación, carga
-        y modelado de una base de datos relacional y multidimensional que soporte el análisis del tráfico vehicular
-        mediante
-        semáforos inteligentes.
-      </p>
-
-      <h4 class="fw-bold text-primary mt-4">Objetivos Específicos</h4>
-      <ul class="list-group list-group-flush shadow-sm rounded text-start">
-        <li class="list-group-item">
-          <i class="bi bi-diagram-3 text-success me-2"></i>
-          Diseñar un modelo relacional que represente las entidades principales del sistema: vehículos, ubicaciones,
-          fechas, semáforos y velocidades.
-        </li>
-        <li class="list-group-item">
-          <i class="bi bi-box-arrow-in-down text-success me-2"></i>
-          Implementar procesos ETL en SSIS para la carga controlada de los datos hacia la base de datos SQL Server.
-        </li>
-        <li class="list-group-item">
-          <i class="bi bi-graph-up text-success me-2"></i>
-          Crear un modelo multidimensional derivado del modelo relacional, optimizado para análisis y consultas de alto
-          nivel.
-        </li>
-        <li class="list-group-item">
-          <i class="bi bi-stopwatch text-success me-2"></i>
-          Realizar consultas comparativas entre ambos modelos y medir los tiempos de respuesta para evaluar el
-          rendimiento.
-        </li>
-        <li class="list-group-item">
-          <i class="bi bi-bug text-success me-2"></i>
-          Identificar y documentar errores o dificultades surgidas durante la carga y la ejecución de las consultas,
-          proponiendo posibles soluciones.
-        </li>
-      </ul>
-    </section>
+      <div class="col-lg-4">
+        <div class="card card-soft p-3">
+          <h5 class="card-soft-header intro">
+            <i class="bi bi-buildings"></i>
+            <div>
+              <div class="fw-bold">Universidad de Cundinamarca</div>
+              <small class="">Big Data — Reportes Data Warehouse</small>
+            </div>
+          </h5>
+          <p class="mb-0">
+            Proyecto orientado a optimizar el flujo vehicular mediante análisis
+            de datos y semáforos inteligentes.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
+</header>
+
+<div id="intro">
+  <!-- Introducción -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h3 fw-bold mb-4">1. Introducción</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card card-soft h-100">
+            <div class="card-body">
+              <h5 class="card-soft-header">
+                <i class="bi bi-lightbulb"></i>
+                Concepto
+              </h5>
+              <p class="mb-0">
+                El proyecto se enmarca en el desarrollo de una
+                <b>Ciudad Inteligente</b>, buscando optimizar la gestión urbana
+                mediante herramientas tecnológicas. En esta primera fase se
+                aborda el <b>subsistema de semaforización inteligente</b>,
+                orientado a mejorar el flujo vehicular con análisis de datos en
+                tiempo real.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-soft h-100">
+            <div class="card-body">
+              <h5 class="card-soft-header">
+                <i class="bi bi-cpu"></i>
+                Tecnología
+              </h5>
+              <p class="mb-0">
+                Se diseñó una <b>base de datos relacional</b> que almacena
+                información de sensores, vehículos, ubicaciones y fechas. Los
+                datos fueron procesados mediante
+                <b
+                  >ETL (Extract, Transform, Load) con SQL Server Integration
+                  Services (SSIS)</b
+                >, garantizando integridad y consistencia.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-soft h-100">
+            <div class="card-body">
+              <h5 class="card-soft-header">
+                <i class="bi bi-clipboard-data"></i>
+                Resultados
+              </h5>
+              <p class="mb-0">
+                Se construyó una <b>base multidimensional</b> para análisis y
+                evaluación del tráfico, sentando las bases para la toma de
+                decisiones. Se realizaron pruebas de rendimiento comparando
+                modelos relacional y multidimensional, evaluando su
+                <b>eficiencia y capacidad analítica</b>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Contexto -->
+  <section class="section alt">
+    <div class="container">
+      <h2 class="h3 fw-bold mb-3">Contexto</h2>
+      <div class="alert alert-info d-flex align-items-start" role="alert">
+        <i class="bi bi-geo-alt-fill me-3 fs-3"></i>
+        <p class="mb-0">
+          El proyecto se centra en la movilidad de la ciudad de <b>Bogotá</b>,
+          una de las más congestionadas del mundo. El sistema toma datos cada 5
+          minutos, las 24 horas del día, sobre el flujo vehicular y la velocidad
+          en cada semáforo. Mediante procedimientos almacenados, el tiempo de
+          los semáforos se ajusta dinámicamente para reducir la congestión y
+          mejorar la movilidad urbana.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Objetivos -->
+<section id="objetivos" class="section">
+  <div class="container">
+    <h2 class="h3 fw-bold mb-4">2. Objetivos</h2>
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="card card-soft h-100 p-4">
+          <h5 class="card-soft-header">
+            <i class="bi bi-bullseye"></i>Objetivo General
+          </h5>
+          <p class="mb-0">
+            Desarrollar la primera fase del sistema de información para la
+            Ciudad Inteligente, enfocada en la creación, carga y modelado de una
+            base de datos relacional y multidimensional que soporte el análisis
+            del tráfico vehicular mediante semáforos inteligentes.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="card card-soft h-100 p-4">
+          <h5 class="card-soft-header">
+            <i class="bi bi-list-check"></i>Objetivos Específicos
+          </h5>
+          <ul class="mb-0">
+            <li>
+              Diseñar un modelo relacional que represente las entidades
+              principales del sistema: vehículos, ubicaciones, fechas, semáforos
+              y velocidades.
+            </li>
+            <li>
+              Implementar procesos ETL en SSIS para la carga controlada de los
+              datos hacia la base de datos SQL Server.
+            </li>
+            <li>
+              Crear un modelo multidimensional derivado del modelo relacional,
+              optimizado para análisis y consultas de alto nivel.
+            </li>
+            <li>
+              Realizar consultas comparativas entre ambos modelos y medir los
+              tiempos de respuesta para evaluar el rendimiento.
+            </li>
+            <li>
+              Identificar y documentar errores o dificultades surgidas durante
+              la carga y la ejecución de las consultas, proponiendo posibles
+              soluciones.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modelos Relacionales -->
+<section id="modelos-relacionales" class="section alt">
+  <div class="container">
+    <h2 class="h3 fw-bold mb-4">3. Modelos Relacionales</h2>
+
+    <div class="row g-4">
+      <!-- Resumen del modelo -->
+      <div class="col-lg-5">
+        <div class="card card-soft h-100 p-4">
+          <h5 class="card-soft-header">
+            <i class="bi bi-diagram-3"></i>
+            Título ejemplo - Esquema y Normalización
+          </h5>
+          <p class="mb-3">
+            El modelo relacional está normalizado (3FN) para asegurar integridad
+            y eficiencia en la carga/consulta. Se organiza alrededor de
+            entidades operacionales (lecturas de tráfico y estados de semáforo)
+            y catálogos de referencia (tiempo, ubicación, dispositivos y tipos).
+          </p>
+          <ul class="mb-0">
+            <li>
+              <b>Integridad:</b> claves primarias (PK), claves foráneas (FK) y
+              dominios controlados.
+            </li>
+            <li>
+              <b>Historial:</b> timestamps, origen de datos y bitácoras de carga
+              (ETL).
+            </li>
+            <li>
+              <b>Consultas:</b> vistas para validación, agregación y control de
+              calidad.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Entidades principales -->
+      <div class="col-lg-7">
+        <div class="card card-soft h-100 p-4">
+          <h5 class="card-soft-header">
+            <i class="bi bi-collection"></i>
+            Explicación de Entidades y Relaciones
+          </h5>
+
+
+          <!-- Tabla compacta de columnas clave -->
+          <div class="table-responsive">
+            <table class="table table-sm align-middle mb-0">
+              <thead>
+                <tr>
+                  <th>Tabla</th>
+                  <th>Columnas clave</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>NombreTabla</b></td>
+                  <td>
+                    <span class="badge text-bg-light">PK: ColumnaID</span>
+                    <span class="badge text-bg-light">FK: ColumnaID</span>
+                    <span class="badge text-bg-light">FK: ColumnaID</span>
+                    <span class="badge text-bg-light">FK: ColumnaID</span>
+                  </td>
+                  <td>Descripción de la conexión</td>
+                </tr>
+                <tr>
+                  <td><b>NombreTabla</b></td>
+                  <td>
+                    <span class="badge text-bg-light">PK: ColumnaID</span>
+                    <span class="badge text-bg-light">FK: ColumnaID</span>
+                    <span class="badge text-bg-light">FK: ColumnaID</span>
+                    <span class="badge text-bg-light">FK: ColumnaID</span>
+                  </td>
+                  <td>Descripción de la conexión</td>
+                </tr>
+                <tr>
+                  <td><b>NombreTabla</b></td>
+                  <td>
+                    <span class="badge text-bg-light">PK: ColumnaID</span>
+                    <span class="badge text-bg-light">FK: ColumnaID</span>
+                    <span class="badge text-bg-light">FK: ColumnaID</span>
+                    <span class="badge text-bg-light">FK: ColumnaID</span>
+                  </td>
+                  <td>Descripción de la conexión</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen Diagrama -->
+      <div class="col-lg-12">
+        <div class="card card-soft h-100 p-4">
+          <h5 class="card-soft-header">
+            <i class="bi bi-diagram-3"></i>
+            Ejemplo Diagrama
+          </h5>
+          <img
+            src="https://1.bp.blogspot.com/-9fWfqb24PE8/UIVX2INu7pI/AAAAAAAAAK4/Ce0w6g5UNlw/s1600/diagrama+entidad+relacion.jpg"
+            alt="ejemplo"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dispositivos para las mediciones -->
+<section id="dispositivos-medicion" class="section">
+  <div class="container">
+    <h2 class="h3 fw-bold mb-4">4. Dispositivos para las Mediciones (IoT)</h2>
+
+    <div class="row g-4">
+      <!-- Sensores -->
+      <div class="col-md-4">
+        <div class="card card-soft h-100 p-4">
+          <h5 class="card-soft-header">
+            <i class="bi bi-speedometer2"></i>
+            Dispositivo 1
+          </h5>
+          <p><b>Lista ejemplo</b></p>
+          <ul class="mb-3">
+            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+          </ul>
+          <!-- Mini tabla -->
+          <div class="table-responsive">
+            <table class="table table-sm align-middle mb-0">
+              <thead>
+                <tr>
+                  <th><b>Header 1</b></th>
+                  <th><b>Header 2</b></th>
+                  <th><b>Header 3</b></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Row 1 - Col 1</td>
+                  <td>Row 1 - Col 2</td>
+                  <td>
+                    <span class="badge text-bg-light">Badge Row 1 - Col 3</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Row 1 - Col 1</td>
+                  <td>Row 1 - Col 2</td>
+                  <td>
+                    <span class="badge text-bg-light">Badge Row 1 - Col 3</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card card-soft h-100 p-4">
+          <h5 class="card-soft-header">
+            <i class="bi bi-speedometer2"></i>
+            Dispositivo 2
+          </h5>
+          <p><b>Lista ejemplo</b></p>
+          <ul class="mb-0">
+            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+          </ul>
+
+          <!-- Mini tabla -->
+          <div class="table-responsive">
+            <table class="table table-sm align-middle mb-0">
+              <thead>
+                <tr>
+                  <th><b>Header 1</b></th>
+                  <th><b>Header 2</b></th>
+                  <th><b>Header 3</b></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Row 1 - Col 1</td>
+                  <td>Row 1 - Col 2</td>
+                  <td>
+                    <span class="badge text-bg-light">Badge Row 1 - Col 3</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Row 1 - Col 1</td>
+                  <td>Row 1 - Col 2</td>
+                  <td>
+                    <span class="badge text-bg-light">Badge Row 1 - Col 3</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card card-soft h-100 p-4">
+          <h5 class="card-soft-header">
+            <i class="bi bi-speedometer2"></i>
+            Dispositivo 1
+          </h5>
+          <p><b>Lista ejemplo</b></p>
+          <ul class="mb-3">
+            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+          </ul>
+          <!-- Mini tabla -->
+          <div class="table-responsive">
+            <table class="table table-sm align-middle mb-0">
+              <thead>
+                <tr>
+                  <th><b>Header 1</b></th>
+                  <th><b>Header 2</b></th>
+                  <th><b>Header 3</b></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Row 1 - Col 1</td>
+                  <td>Row 1 - Col 2</td>
+                  <td>
+                    <span class="badge text-bg-light">Badge Row 1 - Col 3</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Row 1 - Col 1</td>
+                  <td>Row 1 - Col 2</td>
+                  <td>
+                    <span class="badge text-bg-light">Badge Row 1 - Col 3</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

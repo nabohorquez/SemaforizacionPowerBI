@@ -1,0 +1,112 @@
+*,
+body {
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100,
+        "YTLC" 500;
+}
+
+p,
+ul {
+    font-size: 1.1rem;
+}
+
+h1 {
+    font-weight: 900;
+}
+
+h5 {
+    font-weight: 700;
+}
+
+a.navbar-brand {
+    padding: 0;
+}
+
+.navbar-brand__img {
+    max-width: 200px;
+}
+
+.dropdown-menu {
+    min-width: 360px;
+    max-width: 100%;
+    padding: 1rem;
+    word-wrap: break-word;
+}
+
+.dropdown-menu a.nav-link {
+    white-space: normal;
+    font-size: 1rem;
+}
+
+section.section {
+    padding: 72px 0;
+}
+
+.alt {
+    background-color: var(--bs-tertiary-bg);
+    transition: background-color 0.3s;
+}
+
+section.section.alt {
+    padding: 30px 0;
+}
+
+.badge {
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+}
+
+.badge i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.card-soft {
+    border: 1px solid #eef2f7;
+    box-shadow: 0 6px 18px rgba(18, 38, 63, .06);
+    border-radius: 16px;
+    padding: 10px;
+}
+
+.card-soft-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eef2f7;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.card-soft i,
+.card-soft-header i {
+    color: #003cb3;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.card-soft-header.intro i {
+    font-size: 45px;
+}
+
+.report-footer {
+    border-top: 1px solid var(--bs-border-color);
+    padding: 1rem 0;
+    margin-top: 2rem;
+    color: var(--bs-secondary-color);
+    font-size: .9rem;
+}
+
+.report-footer a {
+    color: var(--bs-body-color);
+    text-decoration: none;
+}
+
+.report-footer a:hover {
+    color: var(--bs-primary);
+    text-decoration: underline;
+}

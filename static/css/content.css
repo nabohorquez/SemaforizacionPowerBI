@@ -1,0 +1,8 @@
+.main-intro {
+    background: linear-gradient(135deg, #e9f2ff 0%, #f7fbff 50%, #ffffff 100%);
+    padding: 96px 0 64px;
+}
+
+.main-intro h1 {
+    color: #003cb3;
+}
