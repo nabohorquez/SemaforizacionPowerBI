@@ -194,7 +194,7 @@
 <!-- Modelos Relacionales -->
 <section id="modelos-relacionales" class="section alt">
   <div class="container">
-    <h2 class="h3 fw-bold mb-4">3. Modelos Relacionales</h2>
+    <h2 class="h3 fw-bold mb-4">3. Modelos Data WareHouse</h2>
 
     <div class="row g-4">
       <!-- Resumen del modelo -->
@@ -202,12 +202,13 @@
         <div class="card card-soft h-100 p-4">
           <h5 class="card-soft-header">
             <i class="bi bi-diagram-3"></i>
-            Título ejemplo - Esquema y Normalización
+            Diagrama en estrella - Esquema y Normalización
           </h5>
           <p class="mb-3">
-            El modelo relacional está normalizado (3FN) para asegurar integridad
-            y eficiencia en la carga/consulta. Se organiza alrededor de
-            entidades operacionales (lecturas de tráfico y estados de semáforo)
+            El modelo relacional fue normalizado (3FN) para asegurar integridad
+            y eficiencia en la carga/consulta y luego des-normalizado para optimizar
+            consultas analíticas mediante un esquema de estrella.
+            Se organiza alrededor de entidades operacionales (lecturas de tráfico y estados de semáforo)
             y catálogos de referencia (tiempo, ubicación, dispositivos y tipos).
           </p>
           <ul class="mb-0">
@@ -248,34 +249,28 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><b>NombreTabla</b></td>
+                  <td><b>Hechos_Trafico</b></td>
                   <td>
-                    <span class="badge text-bg-light">PK: ColumnaID</span>
-                    <span class="badge text-bg-light">FK: ColumnaID</span>
-                    <span class="badge text-bg-light">FK: ColumnaID</span>
-                    <span class="badge text-bg-light">FK: ColumnaID</span>
+                    <span class="badge text-bg-light">PK: id_hecho</span>
+                    <span class="badge text-bg-light">FK: id_fecha</span>
+                    <span class="badge text-bg-light">FK: id_ubicacion</span>
+                    <span class="badge text-bg-light">FK: id_semaforo</span>
                   </td>
-                  <td>Descripción de la conexión</td>
+                  <td>Tabla de hechos principal que registra eventos de tráfico vehicular con velocidad promedio, cantidad de vehículos y relaciones a dimensiones de tiempo, ubicación y semáforo.</td>
                 </tr>
                 <tr>
-                  <td><b>NombreTabla</b></td>
+                  <td><b>Dim_Fecha</b></td>
                   <td>
-                    <span class="badge text-bg-light">PK: ColumnaID</span>
-                    <span class="badge text-bg-light">FK: ColumnaID</span>
-                    <span class="badge text-bg-light">FK: ColumnaID</span>
-                    <span class="badge text-bg-light">FK: ColumnaID</span>
+                    <span class="badge text-bg-light">PK: id_fecha</span>
                   </td>
-                  <td>Descripción de la conexión</td>
+                  <td>Dimensión temporal que almacena información detallada de fecha y hora: año, mes, día, día de la semana, fecha de carga y hora de registro.</td>
                 </tr>
                 <tr>
-                  <td><b>NombreTabla</b></td>
+                  <td><b>Dim_Ubicacion</b></td>
                   <td>
-                    <span class="badge text-bg-light">PK: ColumnaID</span>
-                    <span class="badge text-bg-light">FK: ColumnaID</span>
-                    <span class="badge text-bg-light">FK: ColumnaID</span>
-                    <span class="badge text-bg-light">FK: ColumnaID</span>
+                    <span class="badge text-bg-light">PK: id_ubicacion</span>
                   </td>
-                  <td>Descripción de la conexión</td>
+                  <td>Dimensión geográfica que contiene datos de localización: localidad, dirección, longitud, latitud y equipo semafórico asociado.</td>
                 </tr>
               </tbody>
             </table>
@@ -288,11 +283,11 @@
         <div class="card card-soft h-100 p-4">
           <h5 class="card-soft-header">
             <i class="bi bi-diagram-3"></i>
-            Ejemplo Diagrama
+            Diagrama en estrella de semaforización inteligente
           </h5>
           <img
-            src="https://1.bp.blogspot.com/-9fWfqb24PE8/UIVX2INu7pI/AAAAAAAAAK4/Ce0w6g5UNlw/s1600/diagrama+entidad+relacion.jpg"
-            alt="ejemplo"
+            src="{{ url_for('static', filename='/img/diagrama_estrella.png') }}"
+            alt="Diagrama en estrella de semaforización inteligente"
           />
         </div>
       </div>
@@ -307,136 +302,31 @@
 
     <div class="row g-4">
       <!-- Sensores -->
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="card card-soft h-100 p-4">
           <h5 class="card-soft-header">
             <i class="bi bi-speedometer2"></i>
-            Dispositivo 1
+            Componentes del Controlador de Tráfico
           </h5>
-          <p><b>Lista ejemplo</b></p>
           <ul class="mb-3">
-            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
-            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
-            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
-            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+            <li><strong>Unidad de Control:</strong> El cerebro del sistema, encargado de gestionar las señales y su sincronización.</li>
+            <li><strong>Sensores de Tráfico:</strong> Detectan la presencia de vehículos y peatones, ayudando a ajustar el ciclo semafórico en tiempo real.</li>
+            <li><strong>Comunicación y Redes:</strong> Permiten la comunicación entre diferentes semáforos y la central de control, facilitando la gestión coordinada del tráfico en áreas grandes.</li>
           </ul>
-          <!-- Mini tabla -->
-          <div class="table-responsive">
-            <table class="table table-sm align-middle mb-0">
-              <thead>
-                <tr>
-                  <th><b>Header 1</b></th>
-                  <th><b>Header 2</b></th>
-                  <th><b>Header 3</b></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Row 1 - Col 1</td>
-                  <td>Row 1 - Col 2</td>
-                  <td>
-                    <span class="badge text-bg-light">Badge Row 1 - Col 3</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Row 1 - Col 1</td>
-                  <td>Row 1 - Col 2</td>
-                  <td>
-                    <span class="badge text-bg-light">Badge Row 1 - Col 3</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="card card-soft h-100 p-4">
           <h5 class="card-soft-header">
             <i class="bi bi-speedometer2"></i>
-            Dispositivo 2
+            Tipos de Controladores
           </h5>
-          <p><b>Lista ejemplo</b></p>
           <ul class="mb-0">
-            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
-            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
-            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
-            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
+            <li><strong>Controladores Fijos:</strong> Programados con ciclos predefinidos que no cambian en función del tráfico.</li>
+            <li><strong>Controladores Adaptativos:</strong> Ajustan los ciclos semafóricos en tiempo real basándose en datos de tráfico actualizados.</li>
+            <li><strong>Controladores Centralizados:</strong> Gestionados desde una central de control de tráfico que supervisa y ajusta múltiples intersecciones de manera coordinada.</li>
           </ul>
-
-          <!-- Mini tabla -->
-          <div class="table-responsive">
-            <table class="table table-sm align-middle mb-0">
-              <thead>
-                <tr>
-                  <th><b>Header 1</b></th>
-                  <th><b>Header 2</b></th>
-                  <th><b>Header 3</b></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Row 1 - Col 1</td>
-                  <td>Row 1 - Col 2</td>
-                  <td>
-                    <span class="badge text-bg-light">Badge Row 1 - Col 3</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Row 1 - Col 1</td>
-                  <td>Row 1 - Col 2</td>
-                  <td>
-                    <span class="badge text-bg-light">Badge Row 1 - Col 3</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card card-soft h-100 p-4">
-          <h5 class="card-soft-header">
-            <i class="bi bi-speedometer2"></i>
-            Dispositivo 1
-          </h5>
-          <p><b>Lista ejemplo</b></p>
-          <ul class="mb-3">
-            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
-            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
-            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
-            <li><b>Subtítulo/Subitem:</b> Complemento o definición</li>
-          </ul>
-          <!-- Mini tabla -->
-          <div class="table-responsive">
-            <table class="table table-sm align-middle mb-0">
-              <thead>
-                <tr>
-                  <th><b>Header 1</b></th>
-                  <th><b>Header 2</b></th>
-                  <th><b>Header 3</b></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Row 1 - Col 1</td>
-                  <td>Row 1 - Col 2</td>
-                  <td>
-                    <span class="badge text-bg-light">Badge Row 1 - Col 3</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Row 1 - Col 1</td>
-                  <td>Row 1 - Col 2</td>
-                  <td>
-                    <span class="badge text-bg-light">Badge Row 1 - Col 3</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
     </div>
