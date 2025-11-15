@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: semaforizacion-app
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SQL_USER
+        sync: false
+      - key: SQL_PASSWORD
+        sync: false
+      - key: SQL_HOST
+        sync: false
+      - key: SQL_DB
+        sync: false
+      - key: SQL_WINDOWS_AUTH
+        value: False

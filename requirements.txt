@@ -6,3 +6,4 @@ Flask-Migrate
 flask-sqlalchemy
 pyodbc
 setuptools
+gunicorn
